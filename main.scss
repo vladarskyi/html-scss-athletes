@@ -9,13 +9,6 @@ $transition-time: 1s;
   }
 }
 
-@mixin hover($property, $toValue) {
-  transition: #{$property} $transition-time;
-  &:hover {
-    #{$property}: $toValue;
-  }
-}
-
 * {
   box-sizing: border-box;
 }
@@ -28,64 +21,55 @@ body {
 .people {
   @include onDesktop {
     grid-template-columns: repeat(4, $person-width);
-    // max-width: $person-width * 4 + $row-gap * 3;
     justify-items: center;
     justify-items: stretch;
     padding-inline: 55px;
   }
   
-  // max-width: $person-width * 2 + $row-gap;
   padding-inline: 35px;
   padding-top: 30px;
   display: grid;
   justify-content: center;
-  gap: $row-gap 40px;
+  gap: 10px 10px;
   grid-template-columns: repeat(2, $person-width);
 
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
 }
 
-.person { // вирівняти контейнер 
-  // display: flex;
-  // justify-items: center;
-  // align-items: center;
+.person {
   transition: $transition-time;
   &:hover {
     width: $person-width;
     border-radius: 8px;
     background-color: #EEEEEE;
     transform: scale(1.2);
+    z-index: 1;
       .person__details-extra {
         opacity: 1;
       }
   }
-  // width: $person-width;
-  // border-radius: 8px;
-  // background-color: #EEEEEE;
   
   &__section {
-    padding-top: 10px;
     position: relative;
     display: flex;
     flex-direction: column;
     justify-items: center;
     align-items: center;
     width: $person-width;
-    // border-radius: 8px;
-    // background-color: #EEEEEE;
-    // display: none;
+    padding-top: 10px;
 
     &-img {
       display: block;
-      width: 200px;
       object-fit: contain;
+      width: 200px;
       border-radius: 50%;
     }
   }
 
-  &__rank { // дорівняти текст
+  &__rank {
     position: absolute;
+    display: block;
     right: 21px;
     top: 91px;
     background-color: #fff;
@@ -96,7 +80,6 @@ body {
     border-radius: 50%;
     color: #8B0000;
     font-size: 16px;
-    display: block;
   }
 
   &__details {
@@ -112,7 +95,7 @@ body {
       padding-top: 9px;
       padding-bottom: 16px;
       font-size: 18px;
-      font-weight: normal;
+      font-weight: lighter;
       opacity: 0;
       transition: $transition-time;
     }
